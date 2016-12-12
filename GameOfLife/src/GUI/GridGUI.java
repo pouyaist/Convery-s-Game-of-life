@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  *
  * @author psamadik
  */
-public class Board extends Application {
+public class GridGUI extends Application {
     
     @Override
     public void start(Stage primaryStage) {
