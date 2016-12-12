@@ -4,12 +4,25 @@
  * and open the template in the editor.
  */
 package Logic;
-
 /**
  *
  * @author psamadik
  */
 public class Grid{
     
-   
+    private boolean doneRendering;
+    private int size;
+    
+    public Grid(int size) {
+        this.size = size;
+    }
+    
+    public void checkRenderingStatus() {
+        
+    }
+    
+    public void updateGrid() {
+        
+    }
+    
 }
