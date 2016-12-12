@@ -7,7 +7,7 @@ package Logic;
 
 enum state
 {
-  white, black
+  dead, alive
 }
 /**
  *
@@ -22,17 +22,38 @@ public class Cell {
     private state state;
     
     // Holds the x-coordinate of a cell
-    private int x_coordinate;
+    private int xCoordinate;
     
     // Holds the y-coordinate of a cell
-    private int y_coordinate;
+    private int yCoordinate;
     
     // Constructor for a cell
     Cell()
     {
-        nextState = state.black;
-        state = state.white;
-        x_coordinate = 0;
-        y_coordinate = 0;
+        nextState = state.dead;
+        state = state.alive;
+        xCoordinate = 0;
+        xCoordinate = 0;
+    }
+    
+    public Cell(state state) {
+        this.state = state;
+    }
+
+    public void setNextState(state state) {
+        nextState = state;
+    }
+
+    public void updateState() {
+        state = nextState;
+    }
+
+    public state getState() {
+        return state;
+    }
+    
+    public void setCoordinates(int x, int y){
+        xCoordinate = x;
+        yCoordinate = y;
     }
 }

@@ -9,11 +9,6 @@ package Logic;
  *
  * @author psamadik
  */
-public class Board{
-    
-   
-    public static void main(String[] args) {
-        
-    }
+public class Life {
     
 }
