@@ -5,6 +5,8 @@
  */
 package Logic;
 
+import java.util.*;
+
 enum state
 {
   dead, alive
@@ -12,6 +14,7 @@ enum state
 /**
  *
  * @author npanpali
+ *         
  */
 public class Cell {
     
@@ -27,22 +30,23 @@ public class Cell {
     // Holds the y-coordinate of a cell
     private int yCoordinate;
     
+    // Array to hold the Alive Neighbours
+    Cell[] neighbourCells;
+    
     // Constructor for a cell
-    Cell()
+    public Cell()
     {
         nextState = state.dead;
-        state = state.alive;
+        state = state.dead;
         xCoordinate = 0;
-        xCoordinate = 0;
-    }
-    
-    public Cell(state state) {
-        this.state = state;
-    }
+        xCoordinate = 0;   
+        neighbourCells = new Cell[8];
+    }  
 
-    public void setNextState(state state) {
+
+/*    public void setNextState(state state) {
         nextState = state;
-    }
+    } */
 
     public void updateState() {
         state = nextState;
@@ -55,5 +59,20 @@ public class Cell {
     public void setCoordinates(int x, int y){
         xCoordinate = x;
         yCoordinate = y;
+    }
+    
+    public void goAlive()
+    {
+        
+    }
+    
+    public void goDead()
+    {
+    
+    }
+    
+    public void decideNextState()
+    {
+        
     }
 }
