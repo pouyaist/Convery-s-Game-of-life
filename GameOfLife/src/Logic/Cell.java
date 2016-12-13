@@ -14,13 +14,16 @@ enum cellState
  * @author npanpali
  *         
  */
-public class Cell {
+public class Cell
+{
+
+    private final static byte NUMBER_OF_NEIGHBOURS = 8;    
     
-    // Holds the next state of a cell. 
+    // Holds the next currentState of a cell. 
     private cellState nextState;
     
-    // Holds the current state of a cell. 
-    private cellState state;
+    // Holds the current currentState of a cell. 
+    private cellState currentState;
     
     // Holds the x-coordinate of a cell
     private int xCoordinate;
@@ -31,71 +34,87 @@ public class Cell {
     // Array to hold the Alive Neighbours
     private Cell[] neighbourCells;
     
-    private int aliveNeighbours;
+    // Holds a count of the number of alive neighbours
+    private int aliveNeighbours;    
+    
     // Constructor for a cell
     public Cell()
     {
         nextState = cellState.dead;
-        state = cellState.dead;
+        currentState = cellState.dead;
         xCoordinate = 0;
         xCoordinate = 0;   
-        neighbourCells = new Cell[8];
+        neighbourCells = new Cell[NUMBER_OF_NEIGHBOURS];
         aliveNeighbours = 0;
     }  
 
-    public Cell getNeighbourCellElement(int index) {
+    // Property to get a particular neighbour cell
+    public Cell getNeighbourCellElement(int index)
+    {
         return neighbourCells[index];
     }
     
-    public void setNeighbourCellElement(int index, Cell value) {
+    // Property to set a particular neighbour cell
+    public void setNeighbourCellElement(int index, Cell value)
+    {
         this.neighbourCells[index] = value;
     }
 
-/*    public void setNextState(state state) {
-        nextState = state;
+/*    public void setNextState(currentState currentState)
+    {
+        nextState = currentState;
     } */
-
-    public void updateState() {
-        this.state = this.nextState;
+    
+    // Update the current currentState to the next currentState 
+    public void updateState()
+    {
+        this.currentState = this.nextState;
     }
 
-    public cellState getState() {
-        return this.state;
+    // Get the current currentState of the cell
+    public cellState getCurrentState()
+    {
+        return this.currentState;
     }
     
-    public void setCoordinates(int x, int y){
+    // Set the cell position on the grid.
+    public void setCoordinates(int x, int y)
+    {
         this.xCoordinate = x;
         this.yCoordinate = y;
     }
     
 /*    public void goAlive()
     {
-        this.state = state.alive;
+        this.currentState = currentState.alive;
     }
     
     public void goDead()
     {
-        this.state = state.dead;
+        this.currentState = currentState.dead;
     }  */
     
+    // Holds the logic to decide the next currentState of a cell based on its neighbours. 
+    // 
     public void decideNextState()
     {
         countAliveNeighbours();
-        if(this.state == cellState.dead && aliveNeighbours == 3)
+        if(this.currentState == cellState.dead && aliveNeighbours == 3)
         {
             this.nextState = cellState.alive;
         }
-        else if(this.state == cellState.alive && (aliveNeighbours < 2 || aliveNeighbours > 3))
+        else if(this.currentState == cellState.alive && (aliveNeighbours < 2 || aliveNeighbours > 3))
         {
             this.nextState = cellState.dead;
         }
     }
     
+    // Holds logic to count the number of alive neighbours
     private void countAliveNeighbours()
     {
         for(Cell neighbour: neighbourCells)
         {
-            if(neighbour.state == cellState.alive)
+            if(neighbour.currentState == cellState.alive)
             {
                 this.aliveNeighbours++;
             }            
