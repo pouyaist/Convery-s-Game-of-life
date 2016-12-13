@@ -31,7 +31,7 @@ public class Cell {
     private int yCoordinate;
     
     // Array to hold the Alive Neighbours
-    private Cell[] neighbourCells;
+    public Cell[] neighbourCells;
     
     private int aliveNeighbours;
     // Constructor for a cell
@@ -44,6 +44,7 @@ public class Cell {
         neighbourCells = new Cell[8];
         aliveNeighbours = 0;
     }  
+
 
 
 /*    public void setNextState(state state) {
