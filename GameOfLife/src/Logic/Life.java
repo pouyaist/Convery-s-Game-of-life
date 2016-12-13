@@ -30,9 +30,11 @@ public class Life {
     }
     public void runGame() {
         running = true;
-        grid.checkRenderingStatus();
-        grid.updateGrid();
-        timer++;
+        if (grid.checkRenderingStatus())
+        {
+            grid.updateGrid();
+            timer++;   
+        }
     }
     public void stopGame() {
         running = false;
