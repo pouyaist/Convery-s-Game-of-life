@@ -31,8 +31,9 @@ public class Cell {
     private int yCoordinate;
     
     // Array to hold the Alive Neighbours
-    Cell[] neighbourCells;
+    private Cell[] neighbourCells;
     
+    private int aliveNeighbours;
     // Constructor for a cell
     public Cell()
     {
@@ -41,6 +42,7 @@ public class Cell {
         xCoordinate = 0;
         xCoordinate = 0;   
         neighbourCells = new Cell[8];
+        aliveNeighbours = 0;
     }  
 
 
@@ -63,16 +65,35 @@ public class Cell {
     
     public void goAlive()
     {
-        
+        this.state = state.alive;
     }
     
     public void goDead()
     {
-    
+        this.state = state.dead;
     }
     
     public void decideNextState()
     {
-        
+        countAliveNeighbours();
+        if(this.state == state.dead && aliveNeighbours == 3)
+        {
+            this.nextState = state.alive;
+        }
+        else if(this.state == state.alive && (aliveNeighbours < 2 || aliveNeighbours > 3))
+        {
+            this.nextState = state.dead;
+        }
+    }
+    
+    private void countAliveNeighbours()
+    {
+        for(Cell neighbour: neighbourCells)
+        {
+            if(neighbour.state == state.alive)
+            {
+                aliveNeighbours++;
+            }            
+        }        
     }
 }
