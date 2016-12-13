@@ -5,9 +5,7 @@
  */
 package Logic;
 
-import java.util.*;
-
-enum state
+enum cellState
 {
   dead, alive
 }
@@ -19,10 +17,10 @@ enum state
 public class Cell {
     
     // Holds the next state of a cell. 
-    private state nextState;
+    private cellState nextState;
     
     // Holds the current state of a cell. 
-    private state state;
+    private cellState state;
     
     // Holds the x-coordinate of a cell
     private int xCoordinate;
@@ -37,8 +35,8 @@ public class Cell {
     // Constructor for a cell
     public Cell()
     {
-        nextState = state.dead;
-        state = state.dead;
+        nextState = cellState.dead;
+        state = cellState.dead;
         xCoordinate = 0;
         xCoordinate = 0;   
         neighbourCells = new Cell[8];
@@ -58,19 +56,19 @@ public class Cell {
     } */
 
     public void updateState() {
-        state = nextState;
+        this.state = this.nextState;
     }
 
-    public state getState() {
-        return state;
+    public cellState getState() {
+        return this.state;
     }
     
     public void setCoordinates(int x, int y){
-        xCoordinate = x;
-        yCoordinate = y;
+        this.xCoordinate = x;
+        this.yCoordinate = y;
     }
     
-    public void goAlive()
+/*    public void goAlive()
     {
         this.state = state.alive;
     }
@@ -78,18 +76,18 @@ public class Cell {
     public void goDead()
     {
         this.state = state.dead;
-    }
+    }  */
     
     public void decideNextState()
     {
         countAliveNeighbours();
-        if(this.state == state.dead && aliveNeighbours == 3)
+        if(this.state == cellState.dead && aliveNeighbours == 3)
         {
-            this.nextState = state.alive;
+            this.nextState = cellState.alive;
         }
-        else if(this.state == state.alive && (aliveNeighbours < 2 || aliveNeighbours > 3))
+        else if(this.state == cellState.alive && (aliveNeighbours < 2 || aliveNeighbours > 3))
         {
-            this.nextState = state.dead;
+            this.nextState = cellState.dead;
         }
     }
     
@@ -97,9 +95,9 @@ public class Cell {
     {
         for(Cell neighbour: neighbourCells)
         {
-            if(neighbour.state == state.alive)
+            if(neighbour.state == cellState.alive)
             {
-                aliveNeighbours++;
+                this.aliveNeighbours++;
             }            
         }        
     }
