@@ -26,18 +26,16 @@ public class Life {
     }
     private void initGame() {
         grid = new Grid(size);
-        timer = 0;
+        this.timer = 0;
     }
     public void runGame() {
-        //running = true;
-        //while(running) {
+        running = true;
         grid.checkRenderingStatus();
         grid.updateGrid();
         timer++;
-        //}
     }
     public void stopGame() {
-        
+        running = false;
     }
     
     public boolean getRunning() {
