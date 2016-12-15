@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="527.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gol.FXMLDocumentController">
+  <children>
+    <Button fx:id="button" layoutX="14.0" layoutY="464.0" onAction="#handleButtonAction" text="Start" />
+    <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
+    <TableView editable="false" focusTraversable="true" layoutX="59.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="false">
+      <columns>
+        <TableColumn prefWidth="75.0" text="Column X" />
+        <TableColumn prefWidth="75.0" text="Column X" />
+      </columns>
+    </TableView>
+  </children>
+</AnchorPane>

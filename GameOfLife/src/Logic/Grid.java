@@ -19,7 +19,7 @@ public class Grid{
     {
         if (i == -1)
         {
-            i = size -1;  
+            i = size - 1;  
         }
         else if(i == size)
         {
@@ -27,7 +27,7 @@ public class Grid{
         }
         if (j == -1)
         {
-            j = size -1;  
+            j = size - 1;  
         }
         else if(j == size)
         {
@@ -40,9 +40,9 @@ public class Grid{
         this.size = size;
         doneRendering = false;
         cells = new Cell[size][size];
-       for (int i = 0; i< size; i++)
+       for (int i = 0; i < size; i++)
         {
-            for (int j=0; j<size; j++)
+            for (int j=0; j < size; j++)
             {
                 cells[i][j].setNeighbourCellElement(0, getNeighbor(i-1, j));
                 cells[i][j].setNeighbourCellElement(1, getNeighbor(i-1, j-1));
@@ -69,9 +69,9 @@ public class Grid{
                 cells[i][j].decideNextState();       
             }
         }
-        for (int i = 0; i< size; i++)
+        for (int i = 0; i < size; i++)
         {
-            for (int j=0; j<size; j++)
+            for (int j=0; j <size; j++)
             {
                 cells[i][j].updateState();       
             }
